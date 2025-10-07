@@ -20,37 +20,44 @@ export function LeadForm() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setMessage({ type: "", text: "" })
 
-    // Create form data for Mautic submission
-    const formDataToSend = new FormData()
-    formDataToSend.append("mauticform[f_name]", formData.f_name)
-    formDataToSend.append("mauticform[email]", formData.email)
-    formDataToSend.append("mauticform[phone]", formData.phone)
-    formDataToSend.append("mauticform[company]", formData.company)
-    formDataToSend.append("mauticform[formId]", "19")
-    formDataToSend.append("mauticform[formName]", "engage360printingpartners")
-    formDataToSend.append("mauticform[return]", "")
-    formDataToSend.append("mauticform[submit]", "1")
-
-    try {
-      const response = await fetch("https://mautic.abacusdesk.co.in/form/submit?formId=19", {
-        method: "POST",
-        body: formDataToSend,
-        mode: "no-cors" // You might need this for cross-origin requests
-      })
-
-      // Since no-cors mode doesn't give us response data, we assume success
-      setMessage({ type: "success", text: "Thank you for your submission!" })
-      setFormData({ f_name: "", email: "", company: "", phone: "" })
-    } catch (error) {
-      setMessage({ type: "error", text: "Something went wrong. Please try again." })
-    } finally {
-      setIsSubmitting(false)
+    // Since Mautic typically has CORS restrictions, we'll use a traditional form submission
+    // This will handle Mautic's redirect automatically
+    
+    // Create a hidden form and submit it
+    const form = document.createElement("form")
+    form.method = "POST"
+    form.action = "https://mautic.abacusdesk.co.in/form/submit?formId=19"
+    form.style.display = "none"
+    
+    // Add return URL if you want to redirect to a specific page after submission
+    // You can set this to your thank you page URL
+    const returnUrl = "" // e.g., "https://yourdomain.com/thank-you"
+    
+    const fields = {
+      "mauticform[f_name]": formData.f_name,
+      "mauticform[email]": formData.email,
+      "mauticform[phone]": formData.phone,
+      "mauticform[company]": formData.company,
+      "mauticform[formId]": "19",
+      "mauticform[formName]": "engage360printingpartners",
+      "mauticform[return]": returnUrl,
+      "mauticform[submit]": "1"
     }
+    
+    Object.entries(fields).forEach(([name, value]) => {
+      const input = document.createElement("input")
+      input.type = "hidden"
+      input.name = name
+      input.value = value
+      form.appendChild(input)
+    })
+    
+    document.body.appendChild(form)
+    form.submit()
   }
 
   return (
