@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="https://campaign.basiq360.com/loyalty-management-system/images/fevicon.png" />
+      </head>
       <body className="antialiased">
         {children}
         <GoogleTagManager gtmId="GTM-MM5PWB94" />
