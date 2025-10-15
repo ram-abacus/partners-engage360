@@ -25,7 +25,7 @@ export function EarningsCalculator() {
         onChange={(e) => setVolume(Number.parseInt(e.target.value || "0", 10))}
         className="mt-1 mb-3 w-full rounded-xl border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2"
       />
-      <div className="grid grid-cols-3 gap-4 text-sm">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
         <div className="rounded-xl p-4 ring-1 ring-slate-200 bg-slate-50">
           <div className="text-xs text-slate-600">Price/QR</div>
           <div className="text-lg font-semibold">${unitPrice.toFixed(2)}</div>

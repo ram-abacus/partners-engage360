@@ -11,8 +11,8 @@ export function Header() {
               alt="Basiq360 Logo"
               className="h-8 w-auto"
             />
-            <div className="h-6 w-px bg-slate-200" />
-            <span className="font-semibold">Engage360 • Printing Partners</span>
+            <div className="h-6 w-px bg-slate-200 hidden sm:block" />
+            <span className="font-semibold hidden sm:block">Engage360 • Printing Partners</span>
           </a>
         </div>
         <a
