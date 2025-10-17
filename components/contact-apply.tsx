@@ -1,5 +1,5 @@
-import { LeadForm } from "@/components/lead-form"
-
+// import { LeadForm } from "@/components/lead-form"
+import HubSpotForm from "./lead-form";
 
 const Map = () => {
   return (
@@ -21,6 +21,9 @@ export default Map;
 
 
 export function ContactApply() {
+
+  const portalId = "242830238";
+  const formId = "040a98bd-7b7c-46a3-9ba0-db9f344b724c";
 
   return (
     <section className="py-12" id="apply">
@@ -69,9 +72,9 @@ export function ContactApply() {
           </div>
         </div>
         {/* Apply Form */}
-        <div className="bg-white rounded-2xl p-6 shadow-xl ring-1 ring-slate-200">
-          <h3 className="text-xl font-semibold mb-4">Apply to Join</h3>
-          <LeadForm />
+        <div className="bg-white rounded-2xl shadow-xl ring-1 ring-slate-200">
+          {/* <h3 className="text-xl font-semibold mb-4">Apply to Join</h3> */}
+          <HubSpotForm portalId={portalId} formId={formId} targetId="form-section-2" />
         </div>
       </div>
     </section>

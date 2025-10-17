@@ -3,7 +3,8 @@ import { motion } from "framer-motion"
 import { Play } from "lucide-react"
 import { Pill } from "@/components/ui/pill"
 import { Stat } from "@/components/ui/stat"
-import { LeadForm } from "@/components/lead-form"
+// import { LeadForm } from "@/components/lead-form"
+import HubSpotForm from "./lead-form"
 import { BRAND_BLUE, BRAND_ORANGE } from "@/lib/constants"
 
 interface HeroProps {
@@ -11,6 +12,10 @@ interface HeroProps {
 }
 
 export function Hero({ onWatchDemo }: HeroProps) {
+
+  const portalId = "242830238";
+  const formId = "040a98bd-7b7c-46a3-9ba0-db9f344b724c";
+
   return (
     <section className="relative overflow-hidden">
       <div
@@ -62,9 +67,9 @@ export function Hero({ onWatchDemo }: HeroProps) {
             <Stat value="5 steps" label="Plug → Print → Earn" />
           </div>
         </div>
-        <div className="bg-white rounded-2xl p-6 shadow-xl ring-1 ring-slate-200">
-          <h3 className="text-xl font-semibold mb-4">Apply to Join</h3>
-          <LeadForm />
+        <div className="bg-white rounded-2xl shadow-xl ring-1 ring-slate-200">
+          {/* <h3 className="text-xl font-semibold mb-4">Apply to Join</h3> */}
+           <HubSpotForm portalId={portalId} formId={formId} targetId="form-section-1" />
         </div>
       </div>
     </section>
