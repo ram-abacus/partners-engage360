@@ -10,6 +10,7 @@ import { ContactApply } from "@/components/contact-apply"
 import { FAQs } from "@/components/faqs"
 import { Footer } from "@/components/footer"
 import { VideoModal } from "@/components/video-modal"
+import CookieConsent from "@/components/cookies-concent"
 
 export default function Engage360Printers() {
   const [showVideo, setShowVideo] = useState(false)
@@ -25,6 +26,7 @@ export default function Engage360Printers() {
       <FAQs />
       <Footer />
       <VideoModal show={showVideo} onClose={() => setShowVideo(false)} />
+        <CookieConsent />
     </div>
   )
 }
