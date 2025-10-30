@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
+import CookieConsent from "@/components/cookiesConsent"
 
 export const metadata: Metadata = {
   title: "Engage360 - Printing Partners Program",
@@ -21,6 +22,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <CookieConsent />
         <GoogleTagManager gtmId="GTM-MM5PWB94" />
         <GoogleAnalytics gaId="G-M6HMK9JLLG" />
       </body>
