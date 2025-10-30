@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
-import CookieConsent from "@/components/cookiesConsent"
+import CookieConsent from "@/components/CookiesConsent"
 
 export const metadata: Metadata = {
   title: "Engage360 - Printing Partners Program",
